@@ -395,6 +395,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_PACKAGES += \
     LisaCNSettingsProviderOverlay \
+    LisaNfcOverlay \
     LisaGLSettingsProviderOverlay \
     LisaINSettingsProviderOverlay
 
