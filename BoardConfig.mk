@@ -113,28 +113,31 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION) \
 			--kernel_offset $(BOARD_KERNEL_OFFSET) \
 			--dtb_offset $(BOARD_DTB_OFFSET)
 
+TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=$(PRODUCT_DEVICE)
+TARGET_KERNEL_NO_GCC := true
 TARGET_KERNEL_SOURCE := kernel/xiaomi/lisa
-TARGET_KERNEL_CONFIG := lisa_defconfig
+TARGET_KERNEL_CONFIG := vendor/lahaina-qgki_defconfig vendor/debugfs.config vendor/xiaomi_QGKI.config vendor/lisa_QGKI.config
 
-BOARD_KERNEL_CMDLINE += androidboot.console=ttyMSM0 \
-			androidboot.hardware=qcom \
-			androidboot.usbcontroller=a600000.dwc3 \
-			cgroup.memory=nokmem,nosocket \
-			console=ttyMSM0,115200n8 \
-			loop.max_part=7 \
-			msm_rtb.filter=0x237 \
-			service_locator.enable=1 \
-			swiotlb=noforce \
-			pcie_ports=compat \
-			iptable_raw.raw_before_defrag=1 \
-			ip6table_raw.raw_before_defrag=1
+BOARD_KERNEL_CMDLINE += androidboot.console=ttyMSM0
+BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom
+BOARD_KERNEL_CMDLINE += androidboot.memcg=1
+BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a600000.dwc3
+BOARD_KERNEL_CMDLINE += cgroup.memory=nokmem,nosocket
+BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200n8
+BOARD_KERNEL_CMDLINE += loop.max_part=7
+BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x237
+BOARD_KERNEL_CMDLINE += service_locator.enable=1
+BOARD_KERNEL_CMDLINE += swiotlb=0
+BOARD_KERNEL_CMDLINE += pcie_ports=compat
+BOARD_KERNEL_CMDLINE += iptable_raw.raw_before_defrag=1
+BOARD_KERNEL_CMDLINE += ip6table_raw.raw_before_defrag=1
 
 # Kernel modules
 BOOT_KERNEL_MODULES := \
-    hwid.ko \
     goodix_core.ko \
+    hwid.ko \
+    msm_drm.ko \
     xiaomi_touch.ko
-
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(BOOT_KERNEL_MODULES)
 
 # NFC
