@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/derp_lisa.mk
+    $(LOCAL_DIR)/blaze_lisa.mk
 
 COMMON_LUNCH_CHOICES := \
-    derp_lisa-user \
-    derp_lisa-userdebug \
-    derp_lisa-eng
+    blaze_lisa-user \
+    blaze_lisa-userdebug \
+    blaze_lisa-eng
