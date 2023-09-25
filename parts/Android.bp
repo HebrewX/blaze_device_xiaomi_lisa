@@ -14,7 +14,7 @@ android_app {
     privileged: true,
 
     static_libs: [
-        "org.derpfest.settings.resources",
+        "org.lineageos.settings.resources",
     ],
 
     optimize: {
